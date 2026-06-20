@@ -104,24 +104,47 @@
 
 .postLink {
     font-family: var(--font-newsreader), serif;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 4px 0;
+    transition: color 0.2s;
+}
+.postTitle {
     font-size: 13px;
     font-style: italic;
     color: var(--faded);
-    text-decoration: none;
     line-height: 1.5;
-    display: block;
     transition: color 0.2s;
 }
-.postLink:hover {
+.postDate {
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: var(--faded);
+    opacity: 0.55;
+    line-height: 1.4;
+    transition:
+        opacity 0.2s,
+        color 0.2s;
+}
+.postLink:hover .postTitle {
     color: var(--ink-soft);
 }
-.postLinkActive {
+.postLink:hover .postDate {
+    opacity: 0.8;
+}
+.postLinkActive .postTitle {
     color: var(--ink);
     font-style: normal;
     font-weight: 500;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
+}
+.postLinkActive .postDate {
+    color: var(--accent);
+    opacity: 0.85;
 }
 
 /* ─────────────────────────────────────────────

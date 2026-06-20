@@ -1,16 +1,23 @@
+import { getAboutLines } from "@/lib/posts";
+import LandingCard from "@/components/LandingCard";
+
 /**
- * Landing page — just a photograph.
+ * Landing page — a 3D business card that tilts to follow the cursor.
+ * It shows the photo first; clicking advances through the bio lines
+ * as slides, then loops back to the photo.
  *
- * ► Replace /public/landing.jpg with your image.
- *   (JPEG, PNG, or WebP — keep it under ~2 MB for fast loading)
- *
- * The image fills the right-hand area of the viewport.
- * The nav floats over the paper-coloured left margin.
+ * Replace /public/landing.JPG with your image; edit the bio text in
+ * content/about.md (one line per slide). Styling lives in the "CARD"
+ * section of app/globals.css.
  */
-export default function LandingPage() {
+export const metadata = { title: "jeff" };
+
+export default async function LandingPage() {
+  const aboutLines = getAboutLines();
+
   return (
-    <div className="page landing-page">
-      <div className="landing-photo" role="img" aria-label="Landing photograph" />
+    <div className="page">
+      <LandingCard imageSrc="/landing.JPG" aboutLines={aboutLines} />
     </div>
   );
 }

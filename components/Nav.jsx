@@ -17,8 +17,8 @@ export default function Nav({ posts }) {
 
   return (
     <nav className={styles.nav} aria-label="Site navigation">
-      {/* Site name — links to about */}
-      <Link href="/about" className={styles.name}>
+      {/* Site name — links to the merged landing/about page */}
+      <Link href="/" className={styles.name}>
         jeff
       </Link>
 
@@ -59,7 +59,10 @@ export default function Nav({ posts }) {
                   : styles.postLink
               }
             >
-              {post.title}
+              <span className={styles.postTitle}>{post.title}</span>
+              {post.displayDate && (
+                <span className={styles.postDate}>{post.displayDate}</span>
+              )}
             </Link>
           ))}
         </div>

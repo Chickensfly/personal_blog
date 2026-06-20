@@ -1,18 +1,9 @@
-import { getAbout } from "@/lib/posts";
+import { redirect } from "next/navigation";
 
-export const metadata = { title: "jeff — about" };
-
-export default async function AboutPage() {
-  const html = await getAbout();
-
-  return (
-    <div className="page about-page">
-      <h1 className="about-name">jeff</h1>
-
-      <div
-        className="about-body prose"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    </div>
-  );
+/**
+ * /about now lives merged into the landing page at "/".
+ * This keeps old bookmarks/links working by redirecting there.
+ */
+export default function AboutRedirect() {
+  redirect("/");
 }
