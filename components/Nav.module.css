@@ -12,26 +12,49 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    /* same colour as page — no visual separation */
-    background-image: url("/nav_bk.jpg");
-    background-size: cover;
-    background-position: center center;
-
     z-index: 10;
+    /* No background here. The photo lives on ::before instead — see
+       below — so this element stays a plain, fully transparent flex
+       container. That separation matters: it means there is never a
+       second, solid-coloured layer pretending to "match" the page.
+       Only the photo itself fades to true transparency, so whatever
+       is actually behind it (paper colour, grain texture, any page
+       content) shows through directly, with nothing pasted on top
+       and therefore no rectangular edge to perceive. */
 }
 
-.nav::after {
+/* The photographic layer. A separate pseudo-element so the fade
+   mask only ever touches the photo's own pixels — never the nav
+   text (.name / .navLinks), which stays fully opaque regardless of
+   how this is tuned.
+
+   `mask-image` (not a gradient `background` overlay) is what makes
+   this a REAL fade to transparency rather than a fade to a flat
+   colour: the browser actually drops the alpha of this element's
+   own rendered pixels toward the edge, compositing whatever is
+   truly behind it — not an opaque rectangle standing in for it. */
+.nav::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: linear-gradient(
+
+    background-image: url("/nav_bk.jpg");
+    background-size: cover;
+    background-position: center center;
+
+    -webkit-mask-image: linear-gradient(
         to right,
-        transparent 0%,
-        transparent 80%,
-        var(--paper) 100%
+        black 0%,
+        black 70%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 70%,
+        transparent 100%
     );
 }
 
@@ -175,14 +198,6 @@
         flex-wrap: wrap;
         gap: 0 20px;
         border-bottom: none; /* the fade below replaces the hard border */
-
-        /* Control how the photo sits inside the short strip. Because
-           the strip is wide and short, `cover` + a high focal point
-           keeps the interesting part of the image visible. Adjust
-           background-position to reframe (1st value = horizontal,
-           2nd = vertical; e.g. "center 30%" pulls the framing up). */
-        background-size: cover;
-        background-position: 80% center;
     }
     .name {
         font-size: 22px;
@@ -195,16 +210,36 @@
     .postList {
         display: none; /* hidden on mobile nav strip; posts listed on the page itself */
     }
-    /* Re-enable the fade, but pointing DOWN — the strip's open edge
-       is its bottom, so the image dissolves into the page there,
-       mirroring the desktop right-edge blend. */
-    .nav::after {
-        display: block;
-        background: linear-gradient(
+
+    /* Control how the photo sits inside the short strip.
+       IMPORTANT: plain `background-size: cover` on a box this much
+       wider than it is tall, against this image's own aspect ratio,
+       ends up scaling so the image's rendered width exactly equals
+       the box's width — leaving ZERO horizontal overflow to pan
+       through. background-position's horizontal value does nothing
+       in that case, no matter what it's set to. Sizing the width
+       well past 100% here creates real horizontal room to move
+       within. `220%` = image rendered at 2.2x the strip's width;
+       raise it for more horizontal pan range (more zoomed in),
+       lower it (but keep above 100%) for less. */
+    .nav::before {
+        background-size: 220% auto;
+        background-position: 20% 20%;
+
+        /* Re-point the fade — the strip's open edge is its bottom,
+           so the photo dissolves into true transparency there,
+           mirroring the desktop right-edge blend. */
+        -webkit-mask-image: linear-gradient(
             to bottom,
-            transparent 0%,
-            transparent 55%,
-            var(--paper) 100%
+            black 0%,
+            black 55%,
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            black 0%,
+            black 55%,
+            transparent 100%
         );
     }
 }
