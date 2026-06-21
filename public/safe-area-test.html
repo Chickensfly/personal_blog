@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>safe-area test</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f4f0e3;
+    font-family: -apple-system, sans-serif;
+  }
+  .bar {
+    position: fixed;
+    top: calc(env(safe-area-inset-top) * -1);
+    left: 0;
+    width: 100%;
+    height: calc(64px + env(safe-area-inset-top));
+    background: linear-gradient(135deg, #8a2222, #c9a86a);
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 20px 14px;
+    font-size: 16px;
+  }
+  .info {
+    margin-top: 100px;
+    padding: 20px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .value {
+    font-family: monospace;
+    background: #00000010;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+  <div class="bar" id="bar">if this red/gold bar reaches the very top edge of your screen, behind the clock/battery icons, the technique works on your device</div>
+  <div class="info">
+    <p>safe-area-inset-top reported by your browser right now:</p>
+    <p class="value" id="reading">(reading…)</p>
+    <p style="margin-top:16px">If the bar above does NOT reach the top edge, or the reading below says <span class="value">0px</span>, your real site's CSS isn't the problem — something about how this page is being loaded/cached is.</p>
+  </div>
+  <script>
+    const probe = document.createElement('div');
+    probe.style.cssText = 'position:fixed;top:0;height:env(safe-area-inset-top);width:1px;';
+    document.body.appendChild(probe);
+    requestAnimationFrame(() => {
+      const h = getComputedStyle(probe).height;
+      document.getElementById('reading').textContent = h;
+    });
+  </script>
+</body>
+</html>

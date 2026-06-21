@@ -13,7 +13,6 @@
     flex-direction: column;
     justify-content: center;
     z-index: 10;
-}
 
 .nav::before {
     content: "";
@@ -196,7 +195,6 @@
     .postList {
         display: none; /* hidden on mobile nav strip; posts listed on the page itself */
     }
-
     .nav::before {
         background-size: 220% auto;
         background-position: 20% 20%;
