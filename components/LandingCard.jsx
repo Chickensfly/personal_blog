@@ -24,7 +24,7 @@ import { useEffect, useRef, useState } from "react";
  *   - Slides cross-fade; only the active one is interactive.
  */
 
-const MAX_TILT = 30; // degrees of rotation at the screen edges
+const MAX_TILT = 20; // degrees of rotation at the screen edges
 
 export default function LandingCard({ imageSrc, aboutLines }) {
   const cardRef = useRef(null);
@@ -72,10 +72,9 @@ export default function LandingCard({ imageSrc, aboutLines }) {
         cardRef.current.style.transform = `rotateX(${curRX.current.toFixed(2)}deg) rotateY(${curRY.current.toFixed(2)}deg)`;
       }
       if (glareRef.current) {
-        // glare slides opposite the tilt, like light catching the surface
         const gx = 50 + curRY.current * 1.6;
         const gy = 50 - curRX.current * 1.6;
-        glareRef.current.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(255,255,255,0.28), rgba(255,255,255,0) 55%)`;
+        glareRef.current.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(255,255,255,0.18), rgba(255,255,255,0) 55%)`;
       }
       rafId.current = requestAnimationFrame(frame);
     }

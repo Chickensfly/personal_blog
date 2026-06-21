@@ -21,6 +21,20 @@
     z-index: 10;
 }
 
+.nav::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 80%,
+        var(--paper) 100%
+    );
+}
+
 /* ── Site name ─────────────────────────────── */
 .name {
     font-family: var(--font-newsreader), serif;
@@ -172,5 +186,8 @@
     }
     .postList {
         display: none; /* hidden on mobile nav strip; posts listed on the page itself */
+    }
+    .nav::after {
+        display: none; /* the right-edge fade only makes sense on the floating side column */
     }
 }
