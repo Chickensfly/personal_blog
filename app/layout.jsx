@@ -34,7 +34,7 @@ const newsreader = Newsreader({
 
 export const metadata = {
   title: "jeff",
-  description: "a quiet corner of the internet",
+  description: "dissections and digressions",
 };
 
 // ── Layout ────────────────────────────────────────────────────────────────────
