@@ -174,7 +174,15 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 0 20px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        border-bottom: none; /* the fade below replaces the hard border */
+
+        /* Control how the photo sits inside the short strip. Because
+           the strip is wide and short, `cover` + a high focal point
+           keeps the interesting part of the image visible. Adjust
+           background-position to reframe (1st value = horizontal,
+           2nd = vertical; e.g. "center 30%" pulls the framing up). */
+        background-size: cover;
+        background-position: 80% center;
     }
     .name {
         font-size: 22px;
@@ -187,7 +195,16 @@
     .postList {
         display: none; /* hidden on mobile nav strip; posts listed on the page itself */
     }
+    /* Re-enable the fade, but pointing DOWN — the strip's open edge
+       is its bottom, so the image dissolves into the page there,
+       mirroring the desktop right-edge blend. */
     .nav::after {
-        display: none; /* the right-edge fade only makes sense on the floating side column */
+        display: block;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 55%,
+            var(--paper) 100%
+        );
     }
 }

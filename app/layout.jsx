@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, Fraunces, Newsreader } from "next/font/google";
 import Nav from "@/components/Nav";
+import { Analytics } from "@vercel/analytics/next";
 import { getAllPosts } from "@/lib/posts";
 import "./globals.css";
 

@@ -1,0 +1,148 @@
+/* ─────────────────────────────────────────────
+   MOBILE POST MENU
+   Floating button + dropdown sheet for navigating
+   blog posts on mobile. Entirely hidden on desktop,
+   where the nav's margin column handles this.
+   ───────────────────────────────────────────── */
+
+/* Hidden by default (desktop). Only shown at the mobile breakpoint. */
+.wrap {
+    display: none;
+}
+
+/* Floating toggle button, bottom-right */
+.toggle {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 60;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+
+    font-family: var(--font-newsreader), serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    background: var(--ink);
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+.toggleLabel {
+    line-height: 1;
+}
+.chevron {
+    font-size: 12px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+.chevronUp {
+    transform: rotate(180deg);
+}
+
+/* Dim backdrop behind the open sheet */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(35, 31, 23, 0.32);
+    animation: fadeIn 0.2s ease both;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* The dropdown sheet itself — rises from the bottom, above the button */
+.sheet {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 74px;
+    z-index: 58;
+
+    max-height: 62vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    padding: 20px 22px 14px;
+    background: var(--paper);
+    border-radius: 16px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.26);
+
+    /* collapsed state */
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    transform-origin: bottom center;
+    pointer-events: none;
+    transition:
+        opacity 0.24s ease,
+        transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sheetOpen {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.sheetHead {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 12px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 11px 0;
+    text-decoration: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+.item:first-child {
+    border-top: none;
+}
+.itemTitle {
+    font-family: var(--font-newsreader), serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.35;
+}
+.itemDate {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--faded);
+}
+.itemActive .itemTitle {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+}
+.itemActive .itemDate {
+    color: var(--accent);
+}
+
+/* ── Only exists on mobile ── */
+@media (max-width: 740px) {
+    .wrap {
+        display: block;
+    }
+}

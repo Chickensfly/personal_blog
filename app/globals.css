@@ -251,6 +251,31 @@ body.in-writings .content {
     color: var(--faded);
 }
 
+/* Mobile-only "enable tilt" prompt (iOS motion permission gate).
+   Sits just below the card; tapping it requests orientation access. */
+.tilt-prompt {
+    font-family: var(--font-newsreader), serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px solid var(--faded);
+    border-radius: 999px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition:
+        color 0.2s,
+        border-color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+.tilt-prompt:hover,
+.tilt-prompt:active {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
 .about-name {
     font-family: var(--font-cormorant), serif;
     font-optical-sizing: auto;
@@ -477,7 +502,13 @@ body.in-writings .content {
    a minimal strip at the top of the page.
    ───────────────────────────────────────────── */
 @media (max-width: 740px) {
-    .content {
+    /* Match the specificity of `body.in-writings .content` (0,2,1)
+       so this actually wins on mobile — a plain `.content` selector
+       (0,1,1) loses to it even from inside a media query, because
+       media queries don't add specificity. This was why post pages
+       stayed shifted right on mobile. */
+    body .content,
+    body.in-writings .content {
         margin-left: 0;
         padding-top: 64px; /* space for fixed top nav */
     }
@@ -487,6 +518,11 @@ body.in-writings .content {
         padding-left: 28px;
         padding-right: 28px;
         padding-top: 44px;
+    }
+    /* leave room at the bottom so the floating posts button on
+       writings pages never covers the end of the content */
+    .post-page {
+        padding-bottom: 96px;
     }
     .card-stage {
         height: calc(100vh - 64px);
