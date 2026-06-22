@@ -203,7 +203,21 @@
         display: none; /* hidden on mobile nav strip; posts listed on the page itself */
     }
 
+    /*
+     * Extend the ::before pseudo-element upward by env(safe-area-inset-top)
+     * so the background image fills the notch/status-bar area too.
+     * We pull the top up by the safe-area amount (negative margin via top),
+     * and compensate the bottom so the overall visible height stays the same.
+     */
     .nav::before {
+        top: calc(-1 * env(safe-area-inset-top));
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /* Override the inherited `inset: 0` from the desktop rule */
+        inset: unset;
+        position: absolute;
+
         background-size: 220% auto;
         background-position: 20% 20%;
 
