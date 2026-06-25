@@ -33,9 +33,7 @@
     margin: 0;
     padding: 0;
 }
-html {
-    background: #2a0b08;
-}
+html,
 body {
     height: 100%;
 }
@@ -512,7 +510,10 @@ body.in-writings .content {
     body .content,
     body.in-writings .content {
         margin-left: 0;
-        padding-top: 64px; /* space for fixed top nav */
+        /* Clear the full fixed bar: its visible 64px PLUS the notch
+           zone it now extends through. Without adding the inset here,
+           content would start too high and slide under the bar. */
+        padding-top: calc(64px + env(safe-area-inset-top));
     }
     .about-page,
     .post-page,

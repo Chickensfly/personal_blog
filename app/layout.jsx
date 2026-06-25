@@ -59,6 +59,18 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en" className={`${fraunces.variable} ${newsreader.variable}`}>
+      <head>
+        {/* Explicit, hardcoded copy of the viewport-fit=cover tag.
+            The `viewport` export above should produce this on its
+            own, but hardcoding it here too guarantees it's present
+            in the served HTML no matter what — this is the tag that
+            lets the page (and the nav background) extend up under
+            the notch / Dynamic Island instead of stopping below it. */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+      </head>
       <body>
         <Nav posts={posts} />
         <div className="content">{children}</div>

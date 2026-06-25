@@ -13,8 +13,26 @@
     flex-direction: column;
     justify-content: center;
     z-index: 10;
+    /* No background here. The photo lives on ::before instead — see
+       below — so this element stays a plain, fully transparent flex
+       container. That separation matters: it means there is never a
+       second, solid-coloured layer pretending to "match" the page.
+       Only the photo itself fades to true transparency, so whatever
+       is actually behind it (paper colour, grain texture, any page
+       content) shows through directly, with nothing pasted on top
+       and therefore no rectangular edge to perceive. */
 }
 
+/* The photographic layer. A separate pseudo-element so the fade
+   mask only ever touches the photo's own pixels — never the nav
+   text (.name / .navLinks), which stays fully opaque regardless of
+   how this is tuned.
+
+   `mask-image` (not a gradient `background` overlay) is what makes
+   this a REAL fade to transparency rather than a fade to a flat
+   colour: the browser actually drops the alpha of this element's
+   own rendered pixels toward the edge, compositing whatever is
+   truly behind it — not an opaque rectangle standing in for it. */
 .nav::before {
     content: "";
     position: absolute;
@@ -169,69 +187,69 @@
 /* ─────────────────────────────────────────────
    RESPONSIVE — becomes a top strip on mobile
    ───────────────────────────────────────────── */
+.safeAreaFill {
+    display: none;
+}
+
 @media (max-width: 740px) {
+    .safeAreaFill {
+        display: none;
+    }
+
     .nav {
-        position: fixed;
-        left: 0;
-        right: 0;
+        position: relative;
         top: 0;
+        left: auto;
+        right: auto;
         width: 100%;
-        height: calc(64px + env(safe-area-inset-top));
-        padding: env(safe-area-inset-top) 24px 0;
+        height: 64px;
+        padding: 0 24px;
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 0 20px;
-        z-index: 1000;
+        z-index: 1;
+        background: transparent;
+    }
+
+    .nav::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
 
         background-image: url("/nav_bk.jpg");
         background-size: 220% auto;
         background-position: 20% 20%;
         background-repeat: no-repeat;
         background-color: #5a2018;
+
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            black 0,
+            black 35px,
+            transparent 64px
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            black 0,
+            black 35px,
+            transparent 64px
+        );
     }
 
     .name {
         font-size: 22px;
         margin-bottom: 0;
     }
+
     .navLinks {
         flex-direction: row;
         gap: 16px;
     }
+
     .postList {
-        display: none; /* hidden on mobile nav strip; posts listed on the page itself */
-    }
-
-    /*
-     * Extend the ::before pseudo-element upward by env(safe-area-inset-top)
-     * so the background image fills the notch/status-bar area too.
-     * We pull the top up by the safe-area amount (negative margin via top),
-     * and compensate the bottom so the overall visible height stays the same.
-     */
-    .nav::before {
-        top: calc(-1 * env(safe-area-inset-top));
-        bottom: 0;
-        left: 0;
-        right: 0;
-        /* Override the inherited `inset: 0` from the desktop rule */
-        inset: unset;
-        position: absolute;
-
-        background-size: 220% auto;
-        background-position: 20% 20%;
-
-        -webkit-mask-image: linear-gradient(
-            to bottom,
-            black 0,
-            black calc(env(safe-area-inset-top) + 35px),
-            transparent calc(env(safe-area-inset-top) + 64px)
-        );
-        mask-image: linear-gradient(
-            to bottom,
-            black 0,
-            black calc(env(safe-area-inset-top) + 35px),
-            transparent calc(env(safe-area-inset-top) + 64px)
-        );
+        display: none;
     }
 }
