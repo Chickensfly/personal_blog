@@ -37,39 +37,18 @@ export const metadata = {
   description: "dissections and digressions",
 };
 
-// `viewport-fit: cover` lets the page extend under the iPhone's
-// Dynamic Island / status bar safe area instead of stopping short of
-// it. Without this, that strip is reserved space the page can't draw
-// into — which is why the nav's photo previously stopped just below
-// it, leaving a gap of bare background showing through. Paired with
-// the safe-area padding in Nav.module.css so the nav now fills that
-// area with its own background instead of leaving it empty.
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  viewportFit: "cover",
 };
 
-// ── Layout ────────────────────────────────────────────────────────────────────
-
 export default async function RootLayout({ children }) {
-  // Posts are read here once — the list is passed to Nav so it can show
-  // writing titles in the margin when you're in the writings section.
   const posts = getAllPosts();
 
   return (
     <html lang="en" className={`${fraunces.variable} ${newsreader.variable}`}>
       <head>
-        {/* Explicit, hardcoded copy of the viewport-fit=cover tag.
-            The `viewport` export above should produce this on its
-            own, but hardcoding it here too guarantees it's present
-            in the served HTML no matter what — this is the tag that
-            lets the page (and the nav background) extend up under
-            the notch / Dynamic Island instead of stopping below it. */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
+        <meta name="theme-color" content="#6b261d" />
       </head>
       <body>
         <Nav posts={posts} />

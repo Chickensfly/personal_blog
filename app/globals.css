@@ -510,11 +510,9 @@ body.in-writings .content {
     body .content,
     body.in-writings .content {
         margin-left: 0;
-        /* Clear the full fixed bar: its visible 64px PLUS the notch
-           zone it now extends through. Without adding the inset here,
-           content would start too high and slide under the bar. */
-        padding-top: calc(64px + env(safe-area-inset-top));
+        padding-top: 0;
     }
+
     .about-page,
     .post-page,
     .links-page {
