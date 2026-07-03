@@ -1,0 +1,39 @@
+/* Hidden on desktop — the nav column keeps orientation clear there */
+.btn {
+    display: none;
+}
+
+@media (max-width: 740px) {
+    .btn {
+        display: block;
+
+        margin: 48px auto 0;
+        padding: 12px 28px;
+
+        font-family: var(--font-newsreader), serif;
+        font-size: 22px;
+        color: var(--faded);
+
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        opacity: 0;
+        transform: translateY(6px);
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            color 0.2s;
+
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn.visible {
+        opacity: 1;
+        transform: none;
+    }
+
+    .btn:active {
+        color: var(--accent);
+    }
+}
