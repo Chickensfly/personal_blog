@@ -30,6 +30,18 @@ export default async function PostPage({ params }) {
       <MobilePostMenu posts={posts} />
       <h1 className="post-title">{post.title}</h1>
       {post.displayDate && <p className="post-date">{post.displayDate}</p>}
+      {post.tags.length > 0 && (
+        <ul className="post-tags" aria-label="Tags">
+          {post.tags.map((tag) => (
+            /* When filtering is added later, swap this <span> for
+               a <Link href={`/writings?tag=${tag}`}> and the list
+               will become a filterable tag index automatically. */
+            <li key={tag} className="post-tag">
+              <span>{tag}</span>
+            </li>
+          ))}
+        </ul>
+      )}
       <div
         className="post-body prose"
         dangerouslySetInnerHTML={{ __html: post.html }}

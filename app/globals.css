@@ -335,8 +335,39 @@ body.in-writings .content {
     font-size: 14.5px;
     color: var(--faded);
     letter-spacing: 0.04em;
+    /* reduced bottom margin when tags follow; the tag list supplies
+       its own gap before the body */
+}
+.post-date:has(+ .post-tags) {
+    margin-bottom: 1rem;
+}
+.post-date:not(:has(+ .post-tags)) {
     margin-bottom: 3.2rem;
 }
+
+/* ── Post tags ──────────────────────────────────────────────────
+   Display-only for now. When filtering is added, swap the inner
+   <span> in page.jsx for a <Link> and no CSS changes are needed.
+   ───────────────────────────────────────────────────────────── */
+.post-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 3.2rem;
+}
+.post-tag span {
+    display: inline-block;
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faded);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 3px 11px;
+    opacity: 0.75;
+}
+
 .post-body {
     max-width: var(--reading-w);
 }
@@ -455,6 +486,64 @@ body.in-writings .content {
     display: block;
     margin: 2em 0;
 }
+.prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92em;
+    margin: 2em 0;
+}
+.prose thead tr {
+    border-bottom: 2px solid var(--ink-soft);
+}
+.prose th {
+    text-align: left;
+    font-weight: 600;
+    padding: 6px 14px 8px 0;
+    color: var(--ink);
+}
+.prose td {
+    padding: 8px 14px 8px 0;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    color: var(--ink-soft);
+}
+.prose tr:last-child td {
+    border-bottom: none;
+}
+
+/* ── Kernel / grid tables ───────────────────────────────────────
+   For dithering error-diffusion kernels and similar spatial grids
+   where cell position is the meaning. Use <table class="kernel">
+   directly in markdown — marked passes raw HTML through. ── */
+.prose table.kernel {
+    width: auto; /* shrink to content, not full column width */
+    margin: 1.6em 0;
+    border-collapse: collapse;
+    font-family: ui-monospace, Menlo, "Courier New", monospace;
+    font-size: 0.88em;
+}
+.prose table.kernel td {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0;
+    width: 52px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    color: var(--ink);
+    /* reset from the prose td rule above */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+/* Empty cells — no border, visually absent from the grid */
+.prose table.kernel td:empty {
+    border-color: transparent;
+    background: transparent;
+}
+/* The current-pixel marker */
+.prose table.kernel td.current {
+    font-weight: 700;
+    color: var(--accent);
+    border-color: var(--accent);
+}
 .prose code {
     font-family: ui-monospace, Menlo, "Courier New", monospace;
     font-size: 0.83em;
@@ -487,6 +576,13 @@ body.in-writings .content {
 }
 
 /* drop cap on first post paragraph */
+.post-body.prose > p:first-child {
+    /* display:flow-root creates a block formatting context, which
+       prevents the floated ::first-letter from interfering with
+       inline elements (<em>, <strong>, <a>) elsewhere in the same
+       paragraph. Safer than overflow:hidden — no clipping risk. */
+    display: flow-root;
+}
 .post-body.prose > p:first-child::first-letter {
     font-family: var(--font-cormorant), serif;
     font-weight: 500;

@@ -1,6 +1,7 @@
 ---
 title: My Subscriptions
 date: 2026-06-07
+tags: [reflection]
 ---
 
 Subscriptions turn nice-to-haves into necessities as individual products or services become inseparable from a great buffet of other offerings. One-and-done consumption becomes paradoxically uneconomical, utility must be maximized to see appropriate returns from the monthly fee. 

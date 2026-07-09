@@ -1,6 +1,7 @@
 ---
 title: A BA Distilled
 date: 2026-06-21
+tags: [reflection]
 ---
 
 This past May, I graduated from UBC with a BA in cognitive systems. The commencement itself provided me little closure with the time I spent at school; a transcript and degree being the final product of my time in Vancouver felt unrepresentative. 
