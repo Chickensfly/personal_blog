@@ -45,4 +45,13 @@ export default [
       },
     ],
   },
+  {
+    heading: "SITE DESIGN",
+    items: [
+      {
+        label: "Fraser Wolfe Portfolio",
+        url: "https://www.fraserwolfe.com",
+      },
+    ]
+  },
 ];
