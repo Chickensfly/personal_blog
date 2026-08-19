@@ -58,7 +58,7 @@ Meaning that 7/16th of the error is added to the right neighboring pixel, 3/16th
   </tr>
 </table>
 
-To test the visual acuity of each approach, I used the *Fight Club* trailer as a stress test to simulate real world performance. Below, you can see how Floyd-Steinberg's error preservation allows for better background detail recall at the price of poorly-defined foreground features. While this could be a worthwhile tradeoff in the conversion of existing media, I have the luxury of creating the entire film from scratch. I found the Atkinson output to be more visually appealing and so I chose to stick with it and make a mental note to keep background elements at a minimum.
+To test the visual acuity of each approach, I used the *Fight Club* trailer as a stress test to simulate real world performance. Below, you can see how Floyd-Steinberg's error preservation allows for better background detail recall at the price of poorly-defined foreground features. While this could be a worthwhile tradeoff for converting existing media, I have the luxury of creating the entire film from scratch. I found the Atkinson output to be more visually appealing and so I chose to stick with it and make a mental note to keep background elements at a minimum.
 
 ![Comparison of different dithering outputs on a Fight Club frame](/whistleblower_dither_compare.png)
 
@@ -70,7 +70,9 @@ Luckily, this effect is mitigated by the downscaled video which is then passed t
 
 Now, I had to write a script. An incredibly daunting task when the domain of possibilities is so unfathomably enormous. Once again, I fixated on the constraints that I did have. I had a good sense of the visual identity of the film and also I had three days to do it all. With the video undergoing such aggressive processing, I figured the sins of subpar special effects or animation work could be easily hidden.
 
-The final product took advantage of this by having the entire piece be narrated, which also sidesteps the difficulties of setting up a nuanced plot within a tight timeframe. Scenes would be described and play out as animated sequences.
+I took inspiration from a short film from Youtube about the austistic experience which used movies clips and tropes to deliver a really elegantly blunt narrative. I have since been unable to find this film again despite my best efforts, but it was memorable enough to continue to be a touchstone during script drafting. I was also inspired by the ridiculousness of heavenly experience as described by NDE accounts that are adamant on their veracity. This was also the premise for a bit in Dan Licata's *For the Boys* standup special.
+
+The final product took advantage of my limited resources by having the entire piece be narrated, which also sidesteps the difficulties of setting up a nuanced plot within a tight timeframe. Scenes would be described and play out as animated sequences.
 
 While the script itself gave me much trouble, it was a result of my perfectionism. I had little trust in what I know now - a script can be both ruined and salvaged through visual development. 
 
@@ -89,3 +91,5 @@ What I can say is that this activity was a great exercise in frustration managem
 Modeling and animation took the vast majority of production time as I was sat for 10+ hours a day trying to fight my perfectionism to move onto the next scene. Once that was done, the editing process took another 3 hours. I am fairly familiar with Final Cut Pro, which I used to assemble everything. This part was a walk in the park in comparison. During the entire process, I desperately wanted to go outside. It was unfortunate that the day after I had submitted it, it was raining. Pafooey.
 
 The final product is currently under review by the Small File Media Festival. If accepted, it will be screened at the Cinematheque in downtown Vancouver and available online at their site. Whether or not it sees the big screen, I am proud of the final product and appreciative of my returns from this trial by fire.
+
+*Update 8/19/2026: The film was officially selected and will be screened live at The Cinematheque in downtown Vancouver on October 17th-18th. Afterwards, it will be available online at the [Small File Media Festival website](https://www.smallfile.ca).*
