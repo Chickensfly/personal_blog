@@ -36,6 +36,12 @@ export default async function LinksPage() {
           Add your links to <code>content/links.js</code>.
         </p>
       )}
+      <div style={{ textAlign: "center" }}>
+        <a style={{ textDecoration: "none" }} href="https://baccyflap.com/noai/?prv&s=jfc" target="_top">« </a> |
+        <a href="https://baccyflap.com/noai" target="_blank">this website is a member of the no ai webring</a>
+        <a style={{ fontSize: "60%" }} href="https://baccyflap.com/noai/?rnd" target="_top">(random)</a> |
+        <a style={{ textDecoration: "none" }} href="https://baccyflap.com/noai/?nxt&s=jfc" target="_top"> »</a>
+      </div>
     </div>
   );
 }

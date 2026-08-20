@@ -2,6 +2,7 @@ import { getAllPosts, getPost } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import MobilePostMenu from "@/components/MobilePostMenu";
 import BackToTop from "@/components/BackToTop";
+import PostFeedLink from "@/components/PostFeedLink";
 
 // Tells Next.js which slugs to pre-render at build time.
 export function generateStaticParams() {
@@ -46,6 +47,7 @@ export default async function PostPage({ params }) {
         className="post-body prose"
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
+      <PostFeedLink />
       <BackToTop />
     </div>
   );

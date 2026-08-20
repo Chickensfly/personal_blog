@@ -1,0 +1,30 @@
+.wrap {
+    margin-top: 4rem;
+    padding-top: 1.6rem;
+    display: flex;
+    justify-content: left;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    font-family: var(--font-newsreader), serif;
+    font-style: italic;
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+    color: var(--faded);
+
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+    color: var(--accent);
+}
+
+.icon {
+    flex-shrink: 0;
+}
