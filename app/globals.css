@@ -432,6 +432,24 @@ body.in-writings .content {
 }
 
 /* ─────────────────────────────────────────────
+   RSS PAGE
+   ───────────────────────────────────────────── */
+.rss-page-centered {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.rss-page-centered p {
+    max-width: 380px;
+    text-align: center;
+    font-style: italic;
+    color: var(--faded);
+}
+
+/* ─────────────────────────────────────────────
    PROSE — shared by about + post body
    ───────────────────────────────────────────── */
 .prose p {

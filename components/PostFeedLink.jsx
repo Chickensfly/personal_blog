@@ -9,7 +9,7 @@ import styles from "./PostFeedLink.module.css";
 export default function PostFeedLink() {
   return (
     <div className={styles.wrap}>
-      <a href="/feed.xml" className={styles.link}>
+      <a href="/rss" className={styles.link}>
         <svg
           className={styles.icon}
           viewBox="0 0 24 24"

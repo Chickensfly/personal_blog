@@ -1,3 +1,10 @@
+/**
+ * app/feed.xml/route.js
+ *
+ * RSS 2.0 feed, generated at build time from the same posts/ directory
+ * the rest of the site reads. Served at /feed.xml.
+ */
+
 import { getAllPosts, getPost } from '@/lib/posts';
 
 // Prerender once at build time instead of on every request.
