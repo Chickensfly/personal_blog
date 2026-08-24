@@ -10,7 +10,10 @@ import LandingCard from "@/components/LandingCard";
  * content/about.md (one line per slide). Styling lives in the "CARD"
  * section of app/globals.css.
  */
-export const metadata = { title: "jeff" };
+export const metadata = {
+  title: "jeff",
+  alternates: { canonical: "/" },
+};
 
 export default async function LandingPage() {
   const aboutLines = getAboutLines();

@@ -33,11 +33,9 @@ const newsreader = Newsreader({
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata = {
+  metadataBase: new URL("https://www.jeffcreates.space"),
   title: "jeff",
   description: "dissections and digressions",
-  alternates: {
-    types: { "application/rss+xml": [{ url: "/feed.xml", title: "jeff — writings" }] },
-  },
 };
 
 export const viewport = {

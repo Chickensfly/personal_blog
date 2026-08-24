@@ -12,7 +12,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = getPost(slug);
-  return { title: post ? `jeff — ${post.title}` : "jeff" };
+  return {
+    title: post ? `jeff — ${post.title}` : "jeff",
+    alternates: { canonical: `/writings/${slug}` },
+  };
 }
 
 export default async function PostPage({ params }) {
