@@ -1,7 +1,7 @@
 ---
 title: Effortlessness
 date: 2026-08-12
-tags: [opinion]
+tags: [essay]
 ---
 
 We really do mean well when we refer to someone as a 'natural'. While it may strip them of their agency as it may suggest factors outside their control are responsible for their skill, the intention is really to communicate an appreciable effortlessness in their craft. After all, effortlessness is a distinction of the highest order, a telltale sign of a professional.
