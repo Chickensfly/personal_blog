@@ -1,5 +1,6 @@
 import { getAllPosts, getPost } from "@/lib/posts";
 import { notFound } from "next/navigation";
+import { marked } from "marked";
 import MobilePostMenu from "@/components/MobilePostMenu";
 import BackToTop from "@/components/BackToTop";
 import PostFeedLink from "@/components/PostFeedLink";
@@ -14,6 +15,7 @@ export async function generateMetadata({ params }) {
   const post = getPost(slug);
   return {
     title: post ? `jeff — ${post.title}` : "jeff",
+    description: post?.blurb || undefined,
     alternates: { canonical: `/writings/${slug}` },
   };
 }
@@ -33,6 +35,12 @@ export default async function PostPage({ params }) {
       <p className="post-eyebrow">writing</p>
       <MobilePostMenu posts={posts} />
       <h1 className="post-title">{post.title}</h1>
+      {post.blurb && (
+        <p
+          className="post-blurb"
+          dangerouslySetInnerHTML={{ __html: marked.parseInline(post.blurb) }}
+        />
+      )}
       {post.displayDate && <p className="post-date">{post.displayDate}</p>}
       {post.tags.length > 0 && (
         <ul className="post-tags" aria-label="Tags">

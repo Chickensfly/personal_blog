@@ -335,14 +335,43 @@ body.in-writings .content {
     font-size: 14.5px;
     color: var(--faded);
     letter-spacing: 0.04em;
-    /* reduced bottom margin when tags follow; the tag list supplies
-       its own gap before the body */
+    /* Bottom margin depends on what follows — a full margin when
+       date is the last element before the body, a smaller one when
+       a blurb and/or tags come next (they supply their own gap). */
+    margin-bottom: 3.2rem;
 }
+.post-date:has(+ .post-blurb),
 .post-date:has(+ .post-tags) {
     margin-bottom: 1rem;
 }
-.post-date:not(:has(+ .post-tags)) {
-    margin-bottom: 3.2rem;
+
+/* ── Post blurb ─────────────────────────────────────────────────
+   A one-to-two sentence teaser, set from frontmatter:
+
+     ---
+     title: My Post
+     date: 2026-07-01
+     blurb: A short, enticing summary of what this post is about.
+     ---
+
+   Rendered in italic Newsreader, a touch larger and less faded
+   than the date, so it reads as an intentional pull-quote rather
+   than metadata. Light markdown (links, emphasis) is supported.
+   ───────────────────────────────────────────────────────────── */
+.post-blurb {
+    font-family: var(--font-newsreader), serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: var(--reading-w);
+    margin-bottom: 1.6rem;
+}
+.post-blurb:has(+ .post-tags) {
+    margin-bottom: 1rem;
+}
+.post-blurb a {
+    color: var(--accent);
 }
 
 /* ── Post tags ──────────────────────────────────────────────────

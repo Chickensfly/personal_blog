@@ -1,6 +1,7 @@
 ---
 title: My Subscriptions
 date: 2026-06-07
+blurb: Putting my money where my mouth is.
 tags: [reflection]
 ---
 

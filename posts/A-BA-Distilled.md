@@ -1,6 +1,7 @@
 ---
 title: A BA Distilled
 date: 2026-06-21
+blurb: Resolving the underwhelm of my undergraduate degree
 tags: [reflection]
 ---
 

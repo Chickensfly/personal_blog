@@ -1,6 +1,7 @@
 ---
-title: Effortlessness
+title: The Fallacy of Effortlessness
 date: 2026-08-12
+blurb: Our emphasis on potential and innate talent is misplaced.
 tags: [essay]
 ---
 
