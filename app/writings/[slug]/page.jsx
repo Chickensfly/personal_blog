@@ -32,8 +32,13 @@ export default async function PostPage({ params }) {
 
   return (
     <div className="page post-page">
-      <p className="post-eyebrow">writing</p>
-      <MobilePostMenu posts={posts} />
+      {/* Eyebrow + mobile posts button share a flex row, so the
+          button is guaranteed to sit on the same line as "WRITING"
+          by layout rather than by a computed offset. */}
+      <div className="post-header-row">
+        <p className="post-eyebrow">writing</p>
+        <MobilePostMenu posts={posts} />
+      </div>
       <h1 className="post-title">{post.title}</h1>
       {post.blurb && (
         <p

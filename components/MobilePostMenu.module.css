@@ -5,33 +5,34 @@
    where the nav's margin column handles this.
    ───────────────────────────────────────────── */
 
-/* Hidden by default (desktop). Only shown at the mobile breakpoint. */
+/* Hidden by default (desktop). Only shown at the mobile breakpoint.
+   `position: relative` makes this the anchor the dropdown sheet is
+   positioned against, so the sheet always drops from the button
+   regardless of where the row ends up on the page. */
 .wrap {
     display: none;
+    position: relative;
 }
 
-/* Floating toggle button — top-right, sitting just below the
-   64px mobile nav strip so it doesn't overlap "writings / links".
-   Raise/lower `top` if you change the nav strip's height. */
+/* Toggle button — sits in the normal document flow inside
+   `.post-header-row`, the flex row it shares with the "WRITING"
+   eyebrow. No `position: fixed`, no `top` offset: flexbox puts it
+   on the eyebrow's line by construction, so it can never drift out
+   of alignment when the title wraps or the nav height changes. */
 .toggle {
-    position: fixed;
-    top: 76px;
-    right: 18px;
-    z-index: 60;
-
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 11px 18px;
+    padding: 9px 16px;
 
     font-family: var(--font-newsreader), serif;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 0.04em;
     color: var(--white);
     background: var(--ink);
     border: none;
     border-radius: 999px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     cursor: pointer;
 
     -webkit-tap-highlight-color: transparent;
@@ -70,13 +71,16 @@
    button, shift this `top` to match (button top + its own height
    + a small gap). */
 .sheet {
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    top: 128px;
+    /* Anchored to `.wrap` (the button's own container), so it always
+       drops from directly beneath the button — no coordinates to
+       keep in sync. */
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
     z-index: 58;
 
-    max-height: calc(100vh - 160px);
+    width: max(240px, 68vw);
+    max-height: 60vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -90,7 +94,7 @@
        in the opposite direction */
     opacity: 0;
     transform: translateY(-10px) scale(0.98);
-    transform-origin: top center;
+    transform-origin: top right;
     pointer-events: none;
     transition:
         opacity 0.24s ease,

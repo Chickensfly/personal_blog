@@ -11,13 +11,22 @@ import styles from "./MobilePostMenu.module.css";
  * Mobile-only navigation for the blog. The desktop layout shows all
  * post titles in a fixed margin column, but that column is hidden on
  * narrow screens — leaving no way to move between posts. This fills
- * that gap: a floating button on post pages opens a vertical dropdown
- * of every post; tapping one navigates to it and collapses the menu,
- * so the post reads full-screen until the button is tapped again.
+ * that gap: a button beside the "WRITING" eyebrow opens a dropdown
+ * of every post; tapping one navigates to it and collapses the menu.
  *
  * Rendered on every writings page but CSS-hidden above the mobile
  * breakpoint (desktop already has its margin column), so it never
  * interferes with the desktop experience.
+ *
+ * POSITIONING: this component sits inside `.post-header-row` (a flex
+ * row shared with the eyebrow, see page.jsx), so the button lines up
+ * with "WRITING" purely through layout — no fixed positioning, no
+ * measured offsets. Earlier versions used `position: fixed` with a
+ * computed `top`, which broke whenever anything above it changed
+ * height (a title wrapping to two lines, nav height, device safe-area
+ * insets). Being in the normal document flow removes that whole class
+ * of bug: the button cannot drift out of line with the eyebrow,
+ * because they are literally the same flex row.
  */
 export default function MobilePostMenu({ posts }) {
   const pathname = usePathname();
@@ -61,7 +70,20 @@ export default function MobilePostMenu({ posts }) {
         />
       )}
 
-      {/* Dropdown sheet of posts */}
+      {/* Floating toggle button */}
+      <button
+        className={styles.toggle}
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-label={open ? "Close posts menu" : "Open posts menu"}
+      >
+        <span className={styles.toggleLabel}>{open ? "close" : "posts"}</span>
+        <span className={`${styles.chevron} ${open ? styles.chevronUp : ""}`}>
+          ▾
+        </span>
+      </button>
+
+      {/* Dropdown sheet of posts — anchored to the button above it */}
       <div
         className={`${styles.sheet} ${open ? styles.sheetOpen : ""}`}
         role="menu"
@@ -88,21 +110,6 @@ export default function MobilePostMenu({ posts }) {
           })}
         </div>
       </div>
-
-      {/* Floating toggle button */}
-      <button
-        className={styles.toggle}
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        aria-label={open ? "Close posts menu" : "Open posts menu"}
-      >
-        <span className={styles.toggleLabel}>
-          {open ? "close" : "posts"}
-        </span>
-        <span className={`${styles.chevron} ${open ? styles.chevronUp : ""}`}>
-          ▾
-        </span>
-      </button>
     </div>
   );
 }

@@ -313,6 +313,22 @@ body.in-writings .content {
     padding: var(--page-pad-top) var(--page-pad) 130px;
     min-height: 100vh;
 }
+/* Row holding the "WRITING" eyebrow and (on mobile) the posts
+   dropdown button. Flex keeps them on the same line by layout, so
+   the button never needs a computed offset to stay aligned. On
+   desktop the button is display:none, leaving the eyebrow alone —
+   the row behaves exactly as the bare <p> did before. */
+.post-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 1.1rem;
+}
+.post-header-row .post-eyebrow {
+    margin-bottom: 0; /* the row supplies the gap now */
+}
+
 .post-eyebrow {
     font-size: 11.5px;
     letter-spacing: 0.24em;
