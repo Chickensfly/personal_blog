@@ -20,7 +20,7 @@ export default async function LandingPage() {
 
   return (
     <div className="page">
-      <LandingCard imageSrc="/landing.JPG" aboutLines={aboutLines} />
+      <LandingCard imageSrc="/landing.webp" aboutLines={aboutLines} />
     </div>
   );
 }

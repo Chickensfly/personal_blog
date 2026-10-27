@@ -1,7 +1,7 @@
 ---
 title: The Whistleblower
 date: 2026-07-8
-blurb: My debut short film comes to life over three days of toil and trouble.
+blurb: My first short film, from three days of toil and trouble.
 tags: [project log]
 ---
 

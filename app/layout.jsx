@@ -50,10 +50,11 @@ export default async function RootLayout({ children }) {
     <html lang="en" className={`${fraunces.variable} ${newsreader.variable}`}>
       <head>
         <meta name="theme-color" content="#6b261d" />
+        <link rel="preload" as="image" href="/nav_bk.webp" type="image/webp" fetchPriority="high" />
       </head>
       <body>
         <Nav posts={posts} />
-        <div className="content">{children}</div>
+        <main className="content">{children}</main>
       </body>
     </html>
   );

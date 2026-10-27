@@ -5,8 +5,6 @@ blurb: BeReal and LinkedIn may try their damndest. Still, nobody can save you bu
 tags: [essay]
 ---
 
-![Title Card Image](/everybody.png)
-
 At the beginning of the year, I predicted that 2026 would see the rise of a social media platform built with the express purpose of strengthening relationships over the exploitation of individual attention. Reporting from within my echo chamber, there is strong demand for some way to be in touch with one's community while omitting the endlessly refreshable timelines. Currently, Instagram is the necessary evil that ensures they hear about the next get-together, concert, or gallery opening; community-building events locked behind Meta's paywall of participation. Simply put, people are growing discontent with the ever-present predatory design practices of modern social media platforms. 
 
 This is no longer a conversation for consumption-conscious weirdos, [entire countries](https://www.unicef.org.au/unicef-youth/staying-safe-online/social-media-ban-explainer?srsltid=AfmBOorZ19VNnf78vinrfgOP5P6PRSDXMnkrntSJzksadVweK539YKG3) are developing policies to defend their populations against harmful social media use. Negative impacts of excessive social media use are [well documented](https://www.worldhappiness.report/ed/2026/executive-summary-happiness-and-social-media/) and well reported, ushering the discussion into the mainstream. Many feel social media saps their energy and patience, an active obstacle that prevents them from living the life they want. 

@@ -40,7 +40,7 @@
     z-index: -1;
     pointer-events: none;
 
-    background-image: url("/nav_bk.jpg");
+    background-image: url("/nav_bk.webp");
     background-size: cover;
     background-position: center center;
 
@@ -219,7 +219,7 @@
         z-index: -1;
         pointer-events: none;
 
-        background-image: url("/nav_bk.jpg");
+        background-image: url("/nav_bk.webp");
         background-size: 220% auto;
         background-position: 20% 20%;
         background-repeat: no-repeat;

@@ -52,6 +52,10 @@ export default [
         label: "Fraser Wolfe Portfolio",
         url: "https://www.fraserwolfe.com",
       },
+      {
+        label: "Nathalie Shnider Portfolio",
+        url: "https://www.nathalieshnider.com",
+      },
     ]
   },
 ];
