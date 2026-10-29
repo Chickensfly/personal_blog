@@ -192,11 +192,14 @@ export default function LandingCard({ imageSrc, aboutLines }) {
               slide === 0 ? "is-active" : ""
             }`}
           >
-            <div
+            <img
               className="card-photo"
-              style={{ backgroundImage: `url(${imageSrc})` }}
-              role="img"
-              aria-label="Landing photograph"
+              src={imageSrc}
+              alt="Landing photograph"
+              width={1400}
+              height={1050}
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
 
