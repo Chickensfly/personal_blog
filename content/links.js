@@ -49,11 +49,15 @@ export default [
     heading: "SITE DESIGN",
     items: [
       {
-        label: "Fraser Wolfe Portfolio",
+        label: "Katie Murday",
+        url: "https://www.katiemurday.com"
+      },
+      {
+        label: "Fraser Wolfe",
         url: "https://www.fraserwolfe.com",
       },
       {
-        label: "Nathalie Shnider Portfolio",
+        label: "Nathalie Shnider",
         url: "https://www.nathalieshnider.com",
       },
     ]

@@ -1,9 +1,7 @@
-This site houses my blog and my digital twin.
+a home for my work worth sharing
 
-Share your thoughts with me at <a href="mailto: jeff300.liu@gmail.com">jeff300.liu@gmail.com</a>.
+currently 9-5 as a geospatial engineer and 5-9 as a product designer.
 
-if you dare....
+want to chat? inquire on making a site? find me at <a href="mailto: jeff300.liu@gmail.com">jeff300.liu@gmail.com</a>.
 
-kidding theres nothing to be afraid of
-
-ever
+nice of you to visit :)
