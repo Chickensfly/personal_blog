@@ -1,5 +1,5 @@
 ---
-title: Lessons From Apple EarPods with Remote and Mic
+title: Apple EarPods with Remote and Mic
 date: 2026-08-26
 blurb: I have toured the best offerings and I am unconvinced.
 tags: [essay]

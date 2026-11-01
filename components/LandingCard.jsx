@@ -138,9 +138,9 @@ export default function LandingCard({ imageSrc, aboutLines }) {
         )}deg) rotateY(${curRY.current.toFixed(2)}deg)`;
       }
       if (glareRef.current) {
-        const gx = 50 + curRY.current * 1.6;
-        const gy = 50 - curRX.current * 1.6;
-        glareRef.current.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(255,255,255,0.18), rgba(255,255,255,0) 55%)`;
+        const gx = 50 + curRY.current * 2;
+        const gy = 50 - curRX.current * 2;
+        glareRef.current.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(255,255,255,0.07), rgba(255,255,255,0.025) 35%, rgba(255,255,255,0) 70%)`;
       }
       rafId.current = requestAnimationFrame(frame);
     }
